@@ -1,0 +1,21 @@
+.logcontainer{
+	background: #C8E5BC;
+	margin:50px;
+	position:relative;
+	left:120px;
+	width: 1200px;
+	height: 500px;
+	padding-left: 400px;
+	padding-right: 400px;
+}
+
+.loginbutton{
+	
+	height: 35px;
+	width: 300px; 
+	top: 20px;
+	left:55px;
+	
+	
+	
+}

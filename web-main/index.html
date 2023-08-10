@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>首页  --SaidByu</title>
+		<link href="./css/index.css" type="text/css" rel="stylesheet">
+		<link href="./adminweb/res/bs/css/bootstrap.min.css" type="text/css" rel="stylesheet">
+	</head>
+	<body>
+		<div id="app">
+			
+			<div class="row firstrow">
+				
+				<div class="col-md-1">
+					<img class="userAvatar" v-bind:src="userinfo.userAvatar"/>
+				</div>
+				<div class="col-md-2">
+					<h3 ><u>{{userinfo.userName}}</u></h3>
+				</div>
+				<div class="col-md-6">
+					
+				</div>
+				<div class="col-md-1">
+					<a v-bind:href="'user_info.html?id='+userinfo.userId"><h5>个人主页</h5></a>
+				</div>
+				<div class="col-md-1">
+					<a href="logout.html"><h5>退出登录</h5></a>
+				</div>
+				
+			</div>
+		<hr/>
+			<div class="row searchrow">
+				<div class="col-md-1">
+					<img class="logo" src="adminweb/res/img/logo.jpg"/>
+				</div>
+				<div class="col-md-1"></div>
+				<div class="col-md-6">
+					<input type="text" class="form-control searchInput" v-model="search"  placeholder="search">
+				</div>
+				<div class="col-md-1">
+					<button type="button" v-on:click="searchArea()" class="btn btn-primary searchButton">
+						 搜索分区
+					</button>
+				</div>
+			</div>
+		<hr/>
+		<div class="row  bigrow">
+			<div class="col-md-8  leftcol">
+				<div class="row arearow" v-for="area in areaList">
+					<a v-bind:href="'tie.html?id='+userinfo.userId+'&areaId='+area.areaId">
+					<div class="col-md-2">
+						<img v-bind:src="'avatar/'+area.areaAvatar" class="areaAvatar" />
+					</div>
+					<div class="col-md-10">
+						<div class="row">
+							<div class="col-md-2 namecol">
+								<h4>{{area.areaName}}</h4>
+							</div>
+							<div class="col-md-2 tienumcol">
+								<h5>贴文数量: {{area.tieNum}}</h5>
+							</div>
+						</div>
+						<div class="row" v-if="area.tieNum!=0">
+							<div class="col-md-1">
+								<img class="authorAvatar" v-bind:src="area.userAvatar" />
+							</div>
+							<div class="col-md-1">
+							</div>
+							<div class="col-md-1">
+								<h1>:</h1>
+								<h6>最热贴文</h6>
+							</div>
+							<div class="col-md-9 tiecol" >
+								<div class="row">
+									<h4>标题:  {{area.tie.tieTitle}}</h3>
+								</div>
+								<div class="row">
+									<h5>{{area.tie.tieContent}}</h3>
+								</div>
+							</div>
+							
+						</div>
+						<div class="row  notie" v-if="area.tieNum==0">
+						暂无贴文	</div>
+					</div>
+					</a>
+					<hr />
+					
+				</div>
+			</div>
+			<div class="col-md-4 rightcol">
+				<div class="row">
+					<h2>热门分区</h2>
+				</div>
+				<div class="row rows" v-for="area in areaListAll" v-if="area.tieNum>1">
+					<a v-bind:href="'tie.html?id='+userinfo.userId+'&areaId='+area.areaId">
+					<div class="col-md-2">
+						<img v-bind:src="'avatar/'+area.areaAvatar" class="areaAvatar2" />
+					</div>
+					<div class="col-md-10">
+						<div class="row hotname">
+							<h3>{{area.areaName}}</h3>
+						</div>
+						<div class="row hotname">
+							<h3>贴文数：{{area.tieNum}}</h3>
+						</div>
+					</div>
+					</a>
+				</div>
+				
+			</div>
+			
+			
+		</div>
+			
+			
+			
+		</div>
+	</body>
+	<script src="vue.js"></script>
+	<script src="axios.min.js"></script>
+	<script src="const.js"></script>
+	<script>
+		var config = {
+			"el":"#app",
+			"data":{
+				"search":"",
+				"userinfo":"",
+				"areaList":[],
+				"areaListAll":[],
+				"tieList":[]
+				},
+			"methods":{
+				"selectAreaAll":function(){
+					var url=serverUrl+"/area/selectAll"
+					axios.post(url)//传参
+					.then(function(res){
+						this.vue.areaList = res.data.data
+						this.vue.areaListAll = res.data.data
+					})
+					.catch(function(err){
+					      window.alert("请求失败");
+					})
+				},
+				"searchArea":function(){
+					var url=serverUrl+"/area/selectByName?name="+this.search
+					axios.post(url)//传参
+					.then(function(res){
+						this.vue.areaList = res.data.data
+					})
+					.catch(function(err){
+					      window.alert("请求失败");
+					})
+				}
+			},
+			"mounted":function(){
+				
+				this.selectAreaAll()
+				
+				var userId = parseInt(window.location.href.split('=')[1])
+				var url=serverUrl+"/user/selectUserInfo?userId="+userId
+				axios.post(url)//传参
+				.then(function(res){
+					
+					this.vue.userinfo = res.data.data
+					
+				})
+				.catch(function(err){
+				      window.alert("请求失败");
+				})
+			}
+			
+		}
+		
+		var vue = new Vue(config)
+	</script>
+</html>

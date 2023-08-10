@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link href="bs/css/bootstrap.min.css" type="text/css" rel="stylesheet">
+		<link href="tieDetail.css" type="text/css" rel="stylesheet">
+		<meta charset="utf-8">
+		<title></title>
+		
+	</head>
+	<body>
+		<div id="app">
+			<table border=2 width = 900>
+				<td>
+					<img v-bind:src="tie.userAvatar" width="300" height="300"><br>
+					{{tie.userName}}<br>
+					等级：{{arealevel}}
+				</td>
+				<td>
+					<h1>{{tie.tieTitle}}</h1>
+					<br>
+					<br>
+					浏览量：{{tie.lookedNum}}<br>
+					{{tie.tieContent}}<br>
+					<img v-bind:src="tie.tiePng"><br>
+					<button v-on:>收藏</button><br>
+					<br>
+					<table border=1 width = 900>
+						<tr v-for="comment in commentListTie">
+							<td>
+								<img v-bind:src = comment.userAvatar width=50 height=50>
+								{{comment.userName}}
+								说：
+								{{comment.commentContent}}
+								<button v-on:click="change(comment.commentLayer,comment.userId)">
+									评论
+								</button>
+								<button v-on:click="selectByOnLayer(comment.commentLayer,comment.commentId)">
+									展开
+								</button>
+								<div class="row" v-if="comment.commentId == tableshow">
+									<div class="row" v-for="comment1 in commentListLayer">
+										<img v-bind:src= comment1.userAvatar class="commentImage">
+										{{comment1.userName}}
+										回复
+										<img v-bind:src= comment1.userOnAvatar class="commentImage">
+										{{comment1.userOnName}}
+										: 
+										{{comment1.commentContent}}
+										<button>
+											评论
+										</button>
+
+									</div>
+								</div>
+							</td>
+							
+						</tr>
+						
+					</table>
+				</td>
+			</table>
+			<div class="commentA" >
+				<input v-if="isshow" v-model="commentContent" type="text" class="form-control"  placeholder="">
+				<button v-if="isshow" v-on:click="insertComment(tie.tieId)">提交</button>
+			</div>
+			
+		</div>
+	</body>
+	<script src=vue.js></script>
+	<script src="axios.min.js"></script>
+	<script src=const.js></script>
+	<script>
+		
+		var config={
+			"el":"#app",
+			"data":{
+				"commentContent":"",
+				"commentOnId":0,
+				"userId":1,
+				"user":{},
+				"arealevel":4,
+				"tableshow":1,
+				"layer":0,
+				"tie":{},
+				"isshow":false,
+				"tieComments":[],
+				"currentComment":["123","123"],
+				"commentListTie":[],
+				"commentListLayer":[]
+			},
+			"methods":{
+				"insertComment":function(tieid){
+					var url=serverUrl+"/comment/insert?commentContent="
+						+this.commentContent
+						+"&commentId=&commentLayer="
+						+this.layer
+						+"&commentOnId="
+						+this.commentOnId
+						+"&tieId="
+						+tieid
+						+"&userId="
+						+this.userId
+					console.log(url)
+					axios.get(url)
+					.then(function(response){
+						var serverResult=response.data
+						var msg=serverResult.msg
+						window.alert(msg)
+					})
+					.catch()
+				},
+				
+				"selectUserInfo":function(){
+					var url=serverUrl+"/user/selectUserInfo?userId="+this.userId
+					axios.get(url)
+					.then(function(response){
+						var serverResult=response.data
+						var item=serverResult.data
+						console.log(item)
+						this.vue.list=item
+					})
+					.catch()	
+				},
+					
+				"selectByOnTie":function(tieId){
+					
+					var url= serverUrl+"/comment/selectByOnTie?tieId="+tieId
+					axios.get(url)
+					.then(function(response){
+						var list = response.data.data
+						this.vue.commentListTie = list
+						
+					})
+					.catch()
+				},
+				"selectByOnLayer":function(layerId,id){
+					console.log(layerId)
+					this.tableshow=id
+					var url= serverUrl+"/comment/selectByOnLayer?layerId="+layerId
+					axios.get(url)
+					.then(function(response){
+						//debugger
+						var list = response.data.data
+						
+						this.vue.commentListLayer=list
+					})
+					.catch()
+				},
+				"change":function(layer,id){
+					this.isshow=true
+					this.layer=layer
+					this.commentOnId=id
+				},
+				"insertCollect":function(userId,tieId){
+					var url= serverUrl+"/collect/insert?tieId="+tieId+"&userId="+userId
+					axios.get(url)
+					.then(function(response){
+						//debugger
+						var msg = response.data.msg
+						
+						window.alert(msg)
+					})
+					.catch()
+				}
+			},
+				
+			
+			"mounted":function(){
+				
+				//itemDetail.html?id=1
+				//debugger
+				var loc = window.location.href;
+				this.userId = parseInt(loc.split('=')[1].split('&')[0])
+				var id = parseInt(loc.split('=')[2])
+				this.selectUserInfo()
+				this.selectByOnTie(id)
+				
+				var url=serverUrl+"/tie/selectShowAll?id="+id
+				axios.get(url)
+				.then(function(responce){
+					var serverResult=responce.data
+					var tie=serverResult.data
+					this.vue.tie=tie
+					console.log(tie)
+				})
+				.catch()
+				
+				var url=serverUrl+"/tie/selectShowAll?id="+id
+				axios.get(url)
+				.then(function(responce){
+					var serverResult=responce.data
+					var tie=serverResult.data
+					this.vue.tie=tie
+					console.log(tie)
+				})
+				.catch()
+				
+			}
+		}
+		var vue= new Vue(config)
+	</script>
+	
+</html>

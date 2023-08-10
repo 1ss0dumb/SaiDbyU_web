@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		
+		<meta charset="utf-8">
+		<title>SaiDbyU-修改个人信息</title>
+
+	</head>
+	<body>
+		<div id="app">
+			<img v-bind:src="info.userAvatar" width=100px><br>
+			用户名：{{info.userName}}<br>
+			邮箱：{{info.userMail}}<br>
+			性别：{{info.userGender}}<br>
+			加入SaiDbyU时间：{{info.userCreateTime.substring(0,10)}}<br>
+			<br>
+			信息修改区<br>
+			
+			<form name="myform">
+			密码验证:<input type="password" id="userPassword" name="box"  value="" />
+			用户邮箱:<input type="text" id="userMail" name="box"  value="" />
+			用户性别:<input type="text" id="userGender" name="box"  value="" />
+			用户头像:<input type="text" id="userAvatar" name="box"  value="" />
+			</form>
+			
+			
+			<button  v-on:click="update_user_info">修改</button>
+			
+			
+			</div>
+			
+		
+		</div>
+	</body>
+	<script src="vue.js"></script>
+	<script src="axios.min.js"></script>
+	<script src="const.js"></script>
+	<script>
+		var config={
+			"el":"#app",
+			"data":{"info":{}},
+			"mounted":function(){
+					//在函数中取data中属性的值，在属性名前加this.
+					//debugger
+					
+					var p=location.search	//?id=1
+					var array=p.split("=") //[0]=?id  [1]=1
+					var id=array[1]
+					
+					
+					var url=serverUrl+"/user/selectUserInfo?userId="+id
+					//用axios去联网，接收服务器返回的数据
+					axios.get(url)
+					.then(function(response){
+						console.log(response)
+						var serverResult=response.data
+						var res = serverResult.data
+						console.log(res)
+						this.vue.info=res
+					})
+					.catch(function(e){
+						console.log(e)
+						window.alert("联网出错了")
+					})
+				},
+			"methods":{
+				"update_user_info":function(){
+					
+					var p=location.search	//?id=1
+					var array=p.split("=") //[0]=?id  [1]=1
+					var id=array[1]
+					
+					
+					var userGender = myform.userGender.value
+					var userMail = myform.userMail.value
+					var userGender = myform.userGender.value
+					var userAvatar = myform.userAvatar.value
+					var userName = this.info.userName
+					var userPassword = myform.userPassword.value
+					
+					var url=serverUrl+"/user/updateUserInfo?userAvatar="+userAvatar+"&userGender="+userGender+"&userMail="+userMail+"&userName="+userName+"&userPassword="+userPassword
+					
+					console.log(url)
+					//用axios去联网，接收服务器返回的数据
+					axios.get(url)
+					
+					.then(function(response){
+						console.log(response)
+						window.alert(response.data.msg)
+					})
+					.catch(function(e){
+						console.log(e)
+						window.alert("联网出错了")
+					})
+				}
+			}
+			
+			}
+		
+		
+		var vue=new Vue(config)
+	</script>
+	
+	
+
+</html>

@@ -1,0 +1,95 @@
+.firstrow{
+	height: 50px;
+	padding-top: 10px;
+	padding-left: 100px;
+}
+
+.rows{
+	margin-top: 20px;
+	background-color: #F4EFFF
+}
+
+.userAvatar{
+	height: 60px;
+	width: 60px;
+}
+
+.searchrow{
+	height: 60px;
+	padding-left: 100px;
+}
+
+.logo{
+	height: 90px;
+	width: 200px;
+}
+
+.searchInput{
+	margin-top: 30px;
+	
+}
+
+.searchButton{
+	margin-top: 30px;
+}
+
+.bigrow{
+	
+}
+
+.hotname{
+	padding-left: 100px;
+}
+
+.leftcol{
+	background-color: #DFF0D8;
+}
+
+.arearow{
+	margin-top: 20px;
+	padding-left: 100px;
+	height: 200px;
+}
+
+.areafirstrow{
+	height: 100px;
+}
+
+.areaAvatar{
+	height: 150px;
+	width: 180px;
+}
+
+.areaAvatar2{
+	height: 110px;
+	width: 120px;
+}
+
+.namecol{
+	margin-left: 40px;
+	width: 100px;
+}
+
+.tienumcol{
+	width: 150px;
+}
+
+.authorAvatar{
+	margin-top: 20px;
+	margin-left: 40px;
+	height: 70px;
+	width: 70px;
+}
+
+.rightcol{
+}
+
+.tiecol{
+	margin-top: 20px;
+}
+
+.notie{
+	padding-left: 50px;
+	padding-top: 20px;
+}
+

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		
+		<meta charset="utf-8">
+		<title>SaiDbyU-修改个人信息</title>
+
+	</head>
+		<body>
+			<div id="app">
+				<img v-bind:src="info.userAvatar" width=100px><br>
+				用户名：{{info.userName}}<br>
+				邮箱：{{info.userMail}}<br>
+				性别：{{info.userGender}}<br>
+				加入SaiDbyU时间：{{info.userCreateTime.substring(0,10)}}<br>
+				
+				信息修改区<br>
+				{data3}
+				用户密码:<input v-model="userPassword"><br>
+				用户邮箱:<input v-model="userMail"><br>
+				用户性别:<input v-model="userGender"><br>
+				用户头像:<input v-model="userAvatar"><br>
+				
+				</div>
+				
+			
+			</div>
+		</body>
+		<script src="vue.js"></script>
+		<script src="axios.min.js"></script>
+		<script src="const.js"></script>
+		<script>
+			var config={
+				"el":"#app",
+				"data":{"info":{}},
+				"data2":{
+					"userAvatar":"用户头像",
+					"userGender":"用户性别",
+					"userMail":"用户邮箱",
+					"userName":"用户名",
+					"userPassword":"用户密码"
+			},
+				"data3":{}
+				"mounted":function(){
+						//在函数中取data中属性的值，在属性名前加this.
+						//debugger
+						var p=location.search	//?id=1
+						var array=p.split("=") //[0]=?id  [1]=1
+						var id=array[1]
+						
+						
+						
+						var url=serverUrl+"/user/selectUserInfo?userId="+id
+						//用axios去联网，接收服务器返回的数据
+						axios.get(url)
+						.then(function(response){
+							console.log(response)
+							var serverResult=response.data
+							var res = serverResult.data
+							console.log(res)
+							this.vue.info=res
+							this.vue.data3=info.userName
+						})
+						.catch(function(e){
+							console.log(e)
+							window.alert("联网出错了")
+						})
+					},
+				"update_user_info":function(){
+					var p=location.search	//?id=1
+					var array=p.split("=") //[0]=?id  [1]=1
+					var id=array[1]
+					var url=serverUrl+"/user/updateUserInfo?userAvatar="+this.userAvatar+"&userGender="+this.userGender+"&userMail="+user.userMail+"&userName="+user.userName+"&userPassword="+user.userPassword
+					//用axios去联网，接收服务器返回的数据
+					axios.get(url)
+					.then(function(response){
+						console.log(response)
+						var serverResult=response.data
+						var res = serverResult.data
+						console.log(res)
+						this.vue.info=res
+					})
+					.catch(function(e){
+						console.log(e)
+						window.alert("联网出错了")
+					})
+					
+					
+				},
+				}
+			
+			
+			var vue=new Vue(config)
+		</script>
+		
+		
+	
+	</html>

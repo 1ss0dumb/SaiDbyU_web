@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			<h1>
+				分区:{{area.areaName}}
+			</h1>
+			<h2>
+				账号：
+			</h2>
+			<table border="2">
+				<tr>
+					<td>
+						<img v-bind:src="list.userAvatar" width="300" height="300" >
+					</td>
+				</tr>
+				<tr>
+					<td>用户名:{{list.userName}}</td>
+					<td><button v-on:click="signfor()">签到</button></td>
+					
+				</tr>
+				<tr>
+					<td>等级:{{dengji}}</td>
+					<td>经验:{{jingyan}}</td>
+				</tr>
+			</table>
+			<h1>帖名:</h1>
+			
+			<table border="1">
+				<tr>
+					<td>作者头像</td>
+					<td>标题</td>
+					<td>发布用户</td>
+					<td>发布时间</td>
+					<td>点赞数</td>
+					<td>浏览数</td>
+					
+					<td>点赞</td>
+					<td>取消点赞</td>
+				</tr>
+				<tr v-for="tie in tieList">
+					<td>
+						<a v-bind:href="'tieDetail.html?userId='+userId+'&tieId='+tie.tieId">
+							<!--br换行 -->
+							<img v-bind:src="tie.userAvatar" width=200 height=200>
+						</a>
+					</td>
+					<td >
+						<a v-bind:href="'tieDetail.html?userId='+userId+'&tieId='+tie.tieId">
+							<!--br换行 -->
+							{{tie.tieTitle}}
+						</a>
+					</td>
+					<td>{{tie.userName}}</td>
+					<td>{{tie.writeTime.split('.')[0]}}</td>
+					<td>{{tie.likedNum}}</td>
+					<td>{{tie.lookedNum}}</td>
+					
+					<td><button v-on:click="upLikeNum(tie.tieId)">点赞</button></td>
+					<td><button v-on:click="deLikeNum(tie.tieId)">取消点赞</button></td>
+				</tr>
+			</table>
+		</div>
+	</body>
+	<script src=vue.js></script>
+	<script src="axios.min.js"></script>
+	<script src=const.js></script>
+	<script>
+		var config={
+			"el":"#app",
+			"data":{
+				"userId":1,
+				"areaId":2,
+				//"areaName":"学习区",
+				"userNameList":["123","234","456"],
+				"tieList":[],
+				"list":{},
+				"dengji":3,
+				"jingyan":49,
+				"area":{}
+			},
+			"methods":{
+				"signfor":function(){
+					this.dengji=4
+					this.jingyan=0
+				},
+				"selectById":function(id){
+					var url=serverUrl+"/selectById?id="+id
+					axios.post(url)
+					.then(function(response){
+						var list=response.data.data
+						this.vue.area=list
+					})
+					.catch()
+				},
+				"selectByArea":function(){
+					var url=serverUrl+"/tie/selectByArea?id="+this.areaId
+					axios.get(url)
+					.then(function(response){
+						var list=response.data.data
+						this.vue.tieList=list
+					})
+					.catch()
+				},
+				"upLikeNum":function(id){
+					var url=serverUrl+"/tie/upLikeNum?id="+id
+					axios.get(url)
+					.then(function(response){
+						window.alert(response.data.msg)
+						
+						this.vue.selectByArea(this.areaId)
+					}).catch()
+					this.selectByArea(this.areaId)
+					url=serverUrl+"/tie/selectByArea?id="+this.areaId
+					axios.get(url)
+					.then(function(response){
+						var list=response.data.data
+						this.vue.tieList=list
+					})
+					.catch()
+				},
+				"deLikeNum":function(id){
+					var url=serverUrl+"/tie/deLikeNum?id="+id
+					axios.get(url)
+					.then(function(response){
+						window.alert(response.data.msg)
+						this.vue.selectByArea(this.areaId)
+					}).catch()
+					this.selectByArea(this.areaId)
+					url=serverUrl+"/tie/selectByArea?id="+this.areaId
+					axios.get(url)
+					.then(function(response){
+						var list=response.data.data
+						this.vue.tieList=list
+					})
+					.catch()
+				}
+				
+			},
+			"mounted":function(){
+				this.selectById(this.areaId)
+				
+				var loc = window.location.href;
+				this.userId = parseInt(loc.split('=')[1].split('&')[0])
+				this.areaId = parseInt(loc.split('=')[2])
+				
+				
+				var url=serverUrl+"/user/selectUserInfo?userId="+this.userId
+				axios.get(url)
+				.then(function(response){
+					var serverResult=response.data
+					var item=serverResult.data
+					console.log(item)
+					this.vue.list=item
+				})
+				.catch()
+				
+				//this.selectUserInfo(this.userId)
+				console.log(this.list.userId)
+				this.selectByArea(this.areaId)
+				var url=serverUrl+"/tie/selectByArea?id="+this.areaId
+				axios.get(url)
+				.then(function(response){
+					var list=response.data.data
+					this.vue.tieList=list
+				})
+				.catch()
+			}
+			
+		}
+		
+		var vue = new Vue(config) 
+	</script>
+</html>

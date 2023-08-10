@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>SaiDbyU-注册</title>
+	</head>
+	<body>
+		<div id="app">
+			用户名:<input v-model="userName"><br>
+			用户密码:<input  type="password"  v-model="userPassword"><br>
+			用户邮箱:<input v-model="userMail"><br>
+			用户性别:<input v-model="userGender"><br>
+			用户头像:<input v-model="userAvatar"><br>
+			
+			<button v-on:click="register">注册</button>
+			<a href="login.html"><button >登录</button></a>
+			
+		</div>
+	</body>
+	<script src="vue.js"></script>
+	<script src="axios.min.js"></script>
+	<script src="const.js"></script>
+	<script>
+		var config={
+			"el":"#app",
+			"data":{
+				"userAvatar":"用户头像",
+				"userGender":"用户性别",
+				"userMail":"用户邮箱",
+				"userName":"用户名",
+				"userPassword":"用户密码"
+				
+			},
+			"methods":{
+				"register":function(){
+					//在函数中取data中属性的值，在属性名前加this.
+					var url=serverUrl+"/user/register?userAvatar="+this.userAvatar+"&userGender="+this.userGender+"&userMail="+this.userMail+"&userName="+this.userName+"&userPassword="+this.userPassword
+				
+					console.log(url)
+					//用axios去联网，接收服务器返回的数据
+					axios.get(url)
+					.then(function(response){
+						console.log(response)
+						window.alert(response.data.msg)
+					})
+					.catch(function(e){
+						console.log(e)
+						window.alert("联网出错了")
+					})
+				},
+				"to_login":function(){
+					window.location.href=clientUrl+"/web/login.html"
+				}
+			}
+		}
+		
+		var vue=new Vue(config)
+	</script>
+	
+</html>

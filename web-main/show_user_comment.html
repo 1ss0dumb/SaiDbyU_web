@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>评论归档  --SaidByu</title>
+		<link href="./css/index.css" type="text/css" rel="stylesheet">
+		<link href="./adminweb/res/bs/css/bootstrap.min.css" type="text/css" rel="stylesheet">
+	</head>
+	<body>
+		<div id="app">
+			
+			<div class="row firstrow">
+				<div class="col-md-1">
+					<img class="userAvatar" v-bind:src="userinfo.userAvatar"/>
+					
+				</div>
+				<div class="col-md-2">
+					<h3 ><u>{{userinfo.userName}}</u></h3>
+				</div>
+				<div class="col-md-6">
+					
+				</div>
+				<div class="col-md-1">
+					<a v-bind:href="'user_info.html?id='+userinfo.userId"><h5>个人主页</h5></a>
+				</div>
+				<div class="col-md-1">
+					<a href="logout.html"><h5>退出登录</h5></a>
+				</div>
+				
+			</div>
+
+		<div class="row  bigrow">
+			<div class="col-md-8  leftcol">
+				<div class="row comment" v-for="comment in commentList">
+					<div class="col-md-10">
+						<div class="row">
+							<div class="col-md-2 namecol">
+								<h4>{{comment.comment_content}}</h4>
+							</div>
+							<div class="col-md-2 tienumcol">
+								<h5>评论时间: {{comment.comment_time}}</h5>
+							</div>
+						</div>
+					</a>
+					<hr />
+					
+				</div>
+			</div>
+		</div>
+			
+			
+			
+		</div>
+	</body>
+	<script src="vue.js"></script>
+	<script src="axios.min.js"></script>
+	<script src="const.js"></script>
+	<script>
+		var config = {
+			"el":"#app",
+			"data":{
+				"search":"",
+				"userinfo":"",
+				"commentList":[],
+				"commentListAll":[],
+				},
+			"methods":{
+				"selectByUserId":function(){
+					
+					var userId = parseInt(window.location.href.split('=')[1])
+					var url=serverUrl+"/comment/selectByUserId?id="+userId
+					console.log(url)
+					axios.get(url)//传参
+					.then(function(response){
+						this.vue.commentList = response.data.data
+						console.log(response.data.data)
+					})
+					.catch(function(err){
+					      window.alert("请求失败");
+					})
+				}
+			},
+			"mounted":function(){
+				
+				this.selectByUserId()
+				var userId = parseInt(window.location.href.split('=')[1])
+				var url=serverUrl+"/user/selectUserInfo?userId="+userId
+				debugger
+				axios.post(url)//传参
+				.then(function(res){
+					
+					this.vue.userinfo = res.data.data
+					
+				})
+				.catch(function(err){
+				      window.alert("请求失败");
+				})
+			}
+			
+		}
+		var vue = new Vue(config)
+	</script>
+</html>

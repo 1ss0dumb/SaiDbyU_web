@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<XPD:PROJECT xmlns:XPD="http://www.staruml.com" version="1">
+<XPD:HEADER>
+<XPD:SUBUNITS>
+</XPD:SUBUNITS>
+<XPD:PROFILES>
+</XPD:PROFILES>
+</XPD:HEADER>
+<XPD:BODY>
+<XPD:OBJ name="DocumentElement" type="UMLProject" guid="Jnus6qPEo0icCorvDwU0KAAA">
+<XPD:ATTR name="Title" type="string">SaiDbyU</XPD:ATTR>
+<XPD:ATTR name="#OwnedElements" type="integer">1</XPD:ATTR>
+<XPD:OBJ name="OwnedElements[0]" type="UMLPackage" guid="m9m7hdK5NU+F9pTuNnlEpQAA">
+<XPD:ATTR name="Name" type="string">com</XPD:ATTR>
+<XPD:REF name="Namespace">Jnus6qPEo0icCorvDwU0KAAA</XPD:REF>
+<XPD:ATTR name="#OwnedElements" type="integer">1</XPD:ATTR>
+<XPD:OBJ name="OwnedElements[0]" type="UMLPackage" guid="GrwNgH0gIEmiQERS85OhigAA">
+<XPD:ATTR name="Name" type="string">tedu</XPD:ATTR>
+<XPD:REF name="Namespace">m9m7hdK5NU+F9pTuNnlEpQAA</XPD:REF>
+<XPD:ATTR name="#OwnedElements" type="integer">4</XPD:ATTR>
+<XPD:OBJ name="OwnedElements[0]" type="UMLPackage" guid="d0cvzeAJS0GS2XRvcDZ7vgAA">
+<XPD:ATTR name="Name" type="string">pojo</XPD:ATTR>
+<XPD:REF name="Namespace">GrwNgH0gIEmiQERS85OhigAA</XPD:REF>
+<XPD:ATTR name="#OwnedElements" type="integer">21</XPD:ATTR>
+<XPD:OBJ name="OwnedElements[0]" type="UMLClass" guid="jRWvEUqiF0CXjL2GWJ4EAgAA">
+<XPD:ATTR name="Name" type="string">UserDAO</XPD:ATTR>
+<XPD:REF name="Namespace">d0cvzeAJS0GS2XRvcDZ7vgAA</XPD:REF>
+</XPD:OBJ>
+<XPD:OBJ name="OwnedElements[1]" type="UMLClass" guid="j7itoyan5kS26k3tkaRmpAAA">
+<XPD:ATTR name="Name" type="string">UserDTO</XPD:ATTR>
+<XPD:REF name="Namespace">d0cvzeAJS0GS2XRvcDZ7vgAA</XPD:REF>
+</XPD:OBJ>
+<XPD:OBJ name="OwnedElements[2]" type="UMLClass" guid="sF2X6OefxUy/9eGJ/bfFegAA">
+<XPD:ATTR name="Name" type="string">UserPasswordDTO</XPD:ATTR>
+<XPD:REF name="Namespace">d0cvzeAJS0GS2XRvcDZ7vgAA</XPD:REF>
+</XPD:OBJ>
+<XPD:OBJ name="OwnedElements[3]" type="UMLClass" guid="mm7oVbXz/EKHKEVMCsafegAA">
+<XPD:ATTR name="Name" type="string">UserVO</XPD:ATTR>
+<XPD:REF name="Namespace">d0cvzeAJS0GS2XRvcDZ7vgAA</XPD:REF>
+</XPD:OBJ>
+<XPD:OBJ name="OwnedElements[4]" type="UMLClass" guid="imaFH7hBPUaLAmuVODdWIQAA">
+<XPD:ATTR name="Name" type="string">TieDTO</XPD:ATTR>
+<XPD:REF name="Namespace">d0cvzeAJS0GS2XRvcDZ7vgAA</XPD:REF>
+</XPD:OBJ>
+<XPD:OBJ name="OwnedElements[5]" type="UMLClass" guid="mf6XkAySpEqkDVIdJOKN7wAA">
+<XPD:ATTR name="Name" type="string">TieDAO</XPD:ATTR>
+<XPD:REF name="Namespace">d0cvzeAJS0GS2XRvcDZ7vgAA</XPD:REF>
+</XPD:OBJ>
+<XPD:OBJ name="OwnedElements[6]" type="UMLClass" guid="KxFHCJXPW0iWVaFgUjZ6JQAA">
+<XPD:ATTR name="Name" type="string">AreaDTO</XPD:ATTR>
+<XPD:REF name="Namespace">d0cvzeAJS0GS2XRvcDZ7vgAA</XPD:REF>
+</XPD:OBJ>
+<XPD:OBJ name="OwnedElements[7]" type="UMLClass" guid="U4ur1Y8FoE+wuD5ppAavnQAA">
+<XPD:ATTR name="Name" type="string">CommentDAO</XPD:ATTR>
+<XPD:REF name="Namespace">d0cvzeAJS0GS2XRvcDZ7vgAA</XPD:REF>
+</XPD:OBJ>
+<XPD:OBJ name="OwnedElements[8]" type="UMLClass" guid="Cx7vxcHIJEKkW5qQPrSZ0AAA">
+<XPD:ATTR name="Name" type="string">CommentDTO</XPD:ATTR>
+<XPD:REF name="Namespace">d0cvzeAJS0GS2XRvcDZ7vgAA</XPD:REF>
+</XPD:OBJ>
+<XPD:OBJ name="OwnedElements[9]" type="UMLClass" guid="L7uFMuJS/0GoOQYcFZYKBgAA">
+<XPD:ATTR name="Name" type="string">AdminDTO</XPD:ATTR>
+<XPD:REF name="Namespace">d0cvzeAJS0GS2XRvcDZ7vgAA</XPD:REF>
+</XPD:OBJ>
+<XPD:OBJ name="OwnedElements[10]" type="UMLClass" guid="2xFhgYWu1kungLpqFNzshgAA">
+<XPD:ATTR name="Name" type="string">UserVerifyDTO</XPD:ATTR>
+<XPD:REF name="Namespace">d0cvzeAJS0GS2XRvcDZ7vgAA</XPD:REF>
+</XPD:OBJ>
+<XPD:OBJ name="OwnedElements[11]" type="UMLClass" guid="o30GI6dVJ0SQYYPz//j9wAAA">
+<XPD:ATTR name="Name" type="string">AreaDAO</XPD:ATTR>
+<XPD:REF name="Namespace">d0cvzeAJS0GS2XRvcDZ7vgAA</XPD:REF>
+</XPD:OBJ>
+<XPD:OBJ name="OwnedElements[12]" type="UMLClass" guid="/Ck14ObN2UmmuF6xXz/kDQAA">
+<XPD:ATTR name="Name" type="string">UserFAreaDAO</XPD:ATTR>
+<XPD:REF name="Namespace">d0cvzeAJS0GS2XRvcDZ7vgAA</XPD:REF>
+</XPD:OBJ>
+<XPD:OBJ name="OwnedElements[13]" type="UMLClass" guid="HYHqYZ14gEa3zwMDKDQpQgAA">
+<XPD:ATTR name="Name" type="string">UserFAreaDTO</XPD:ATTR>
+<XPD:REF name="Namespace">d0cvzeAJS0GS2XRvcDZ7vgAA</XPD:REF>
+</XPD:OBJ>
+<XPD:OBJ name="OwnedElements[14]" type="UMLClass" guid="gZY6MWcd8EaHHlJvn2nNjwAA">
+<XPD:ATTR name="Name" type="string">UserFUserDAO</XPD:ATTR>
+<XPD:REF name="Namespace">d0cvzeAJS0GS2XRvcDZ7vgAA</XPD:REF>
+</XPD:OBJ>
+<XPD:OBJ name="OwnedElements[15]" type="UMLClass" guid="zNHwgG++PE+Ms2PYsKu7SgAA">
+<XPD:ATTR name="Name" type="string">UserFUserDTO</XPD:ATTR>
+<XPD:REF name="Namespace">d0cvzeAJS0GS2XRvcDZ7vgAA</XPD:REF>
+</XPD:OBJ>
+<XPD:OBJ name="OwnedElements[16]" type="UMLClass" guid="1y6gvxTuOE+RdrDFj3LO9QAA">
+<XPD:ATTR name="Name" type="string">CollerctDAO</XPD:ATTR>
+<XPD:REF name="Namespace">d0cvzeAJS0GS2XRvcDZ7vgAA</XPD:REF>
+</XPD:OBJ>
+<XPD:OBJ name="OwnedElements[17]" type="UMLClass" guid="wyhWXp3oTEGY+lMJn5iiiwAA">
+<XPD:ATTR name="Name" type="string">CollecteDTO</XPD:ATTR>
+<XPD:REF name="Namespace">d0cvzeAJS0GS2XRvcDZ7vgAA</XPD:REF>
+</XPD:OBJ>
+<XPD:OBJ name="OwnedElements[18]" type="UMLClass" guid="OdHsLvtcSEinD83vBZC3VQAA">
+<XPD:ATTR name="Name" type="string">TieVO</XPD:ATTR>
+<XPD:REF name="Namespace">d0cvzeAJS0GS2XRvcDZ7vgAA</XPD:REF>
+</XPD:OBJ>
+<XPD:OBJ name="OwnedElements[19]" type="UMLClass" guid="2Z6VthMlbUSECTG3T/VtFgAA">
+<XPD:ATTR name="Name" type="string">AreaVO</XPD:ATTR>
+<XPD:REF name="Namespace">d0cvzeAJS0GS2XRvcDZ7vgAA</XPD:REF>
+</XPD:OBJ>
+<XPD:OBJ name="OwnedElements[20]" type="UMLClass" guid="4bh/33XuMkqNzYeV53wgJQAA">
+<XPD:ATTR name="Name" type="string">AdminDAO</XPD:ATTR>
+<XPD:REF name="Namespace">d0cvzeAJS0GS2XRvcDZ7vgAA</XPD:REF>
+</XPD:OBJ>
+</XPD:OBJ>
+<XPD:OBJ name="OwnedElements[1]" type="UMLPackage" guid="hDDZ5ntZKEemz/kTeRioHwAA">
+<XPD:ATTR name="Name" type="string">mapper</XPD:ATTR>
+<XPD:REF name="Namespace">GrwNgH0gIEmiQERS85OhigAA</XPD:REF>
+<XPD:ATTR name="#OwnedElements" type="integer">8</XPD:ATTR>
+<XPD:OBJ name="OwnedElements[0]" type="UMLInterface" guid="ldQ9xg54dU2bdw4Lh8kUswAA">
+<XPD:ATTR name="Name" type="string">UserMapper</XPD:ATTR>
+<XPD:REF name="Namespace">hDDZ5ntZKEemz/kTeRioHwAA</XPD:REF>
+</XPD:OBJ>
+<XPD:OBJ name="OwnedElements[1]" type="UMLInterface" guid="9chqf6hYmEGOO4vogKWvcQAA">
+<XPD:ATTR name="Name" type="string">AdminMapper</XPD:ATTR>
+<XPD:REF name="Namespace">hDDZ5ntZKEemz/kTeRioHwAA</XPD:REF>
+</XPD:OBJ>
+<XPD:OBJ name="OwnedElements[2]" type="UMLInterface" guid="AbCYRWf+LE2/ggEwddAIPwAA">
+<XPD:ATTR name="Name" type="string">AreaMapper</XPD:ATTR>
+<XPD:REF name="Namespace">hDDZ5ntZKEemz/kTeRioHwAA</XPD:REF>
+</XPD:OBJ>
+<XPD:OBJ name="OwnedElements[3]" type="UMLInterface" guid="c2vL98HN2k2v0dI1rus9BAAA">
+<XPD:ATTR name="Name" type="string">CommentMapper</XPD:ATTR>
+<XPD:REF name="Namespace">hDDZ5ntZKEemz/kTeRioHwAA</XPD:REF>
+</XPD:OBJ>
+<XPD:OBJ name="OwnedElements[4]" type="UMLInterface" guid="0AclDNbrBkWYMF9yMnh4dQAA">
+<XPD:ATTR name="Name" type="string">TieMapper</XPD:ATTR>
+<XPD:REF name="Namespace">hDDZ5ntZKEemz/kTeRioHwAA</XPD:REF>
+</XPD:OBJ>
+<XPD:OBJ name="OwnedElements[5]" type="UMLInterface" guid="deIuOf7KH0S9qEEK38f+YQAA">
+<XPD:ATTR name="Name" type="string">UserFAreaMapper</XPD:ATTR>
+<XPD:REF name="Namespace">hDDZ5ntZKEemz/kTeRioHwAA</XPD:REF>
+</XPD:OBJ>
+<XPD:OBJ name="OwnedElements[6]" type="UMLInterface" guid="I83LZ7RfSUGXr1Qd7adW+AAA">
+<XPD:ATTR name="Name" type="string">UserFUserMapper</XPD:ATTR>
+<XPD:REF name="Namespace">hDDZ5ntZKEemz/kTeRioHwAA</XPD:REF>
+</XPD:OBJ>
+<XPD:OBJ name="OwnedElements[7]" type="UMLInterface" guid="MA8wiA0ieEG00l7624jd5gAA">
+<XPD:ATTR name="Name" type="string">CollectMapper</XPD:ATTR>
+<XPD:REF name="Namespace">hDDZ5ntZKEemz/kTeRioHwAA</XPD:REF>
+</XPD:OBJ>
+</XPD:OBJ>
+<XPD:OBJ name="OwnedElements[2]" type="UMLPackage" guid="vt/MvRi9g0iI0rwwfJXv8gAA">
+<XPD:ATTR name="Name" type="string">service</XPD:ATTR>
+<XPD:REF name="Namespace">GrwNgH0gIEmiQERS85OhigAA</XPD:REF>
+<XPD:ATTR name="#OwnedElements" type="integer">9</XPD:ATTR>
+<XPD:OBJ name="OwnedElements[0]" type="UMLPackage" guid="LJ/oPzFt2k6DKnJ2oYPDpwAA">
+<XPD:ATTR name="Name" type="string">impl</XPD:ATTR>
+<XPD:REF name="Namespace">vt/MvRi9g0iI0rwwfJXv8gAA</XPD:REF>
+<XPD:ATTR name="#OwnedElements" type="integer">8</XPD:ATTR>
+<XPD:OBJ name="OwnedElements[0]" type="UMLClass" guid="AI4MQfbubkmtrzx+AxJaKAAA">
+<XPD:ATTR name="Name" type="string">UserServiceImpl</XPD:ATTR>
+<XPD:REF name="Namespace">LJ/oPzFt2k6DKnJ2oYPDpwAA</XPD:REF>
+</XPD:OBJ>
+<XPD:OBJ name="OwnedElements[1]" type="UMLClass" guid="YZMoBd1amUaKCkG7G/GgrgAA">
+<XPD:ATTR name="Name" type="string">AdiminServiceImpl</XPD:ATTR>
+<XPD:REF name="Namespace">LJ/oPzFt2k6DKnJ2oYPDpwAA</XPD:REF>
+</XPD:OBJ>
+<XPD:OBJ name="OwnedElements[2]" type="UMLClass" guid="qQReYgjzxk+M78tW01c8UAAA">
+<XPD:ATTR name="Name" type="string">CommentServiceImpl</XPD:ATTR>
+<XPD:REF name="Namespace">LJ/oPzFt2k6DKnJ2oYPDpwAA</XPD:REF>
+</XPD:OBJ>
+<XPD:OBJ name="OwnedElements[3]" type="UMLClass" guid="kbpSud9TpUuUsxFn3qeVPgAA">
+<XPD:ATTR name="Name" type="string">TieServiceImpl</XPD:ATTR>
+<XPD:REF name="Namespace">LJ/oPzFt2k6DKnJ2oYPDpwAA</XPD:REF>
+</XPD:OBJ>
+<XPD:OBJ name="OwnedElements[4]" type="UMLClass" guid="JtpN45azP0WUIlTI53I0GQAA">
+<XPD:ATTR name="Name" type="string">AreaServiceImpl</XPD:ATTR>
+<XPD:REF name="Namespace">LJ/oPzFt2k6DKnJ2oYPDpwAA</XPD:REF>
+</XPD:OBJ>
+<XPD:OBJ name="OwnedElements[5]" type="UMLClass" guid="Ds5WnKdUOEGX/xdxdyK5QQAA">
+<XPD:ATTR name="Name" type="string">UserFAreaImpl</XPD:ATTR>
+<XPD:REF name="Namespace">LJ/oPzFt2k6DKnJ2oYPDpwAA</XPD:REF>
+</XPD:OBJ>
+<XPD:OBJ name="OwnedElements[6]" type="UMLClass" guid="sqtaI0XPaEi+sl1bqMR5vQAA">
+<XPD:ATTR name="Name" type="string">UserFUserImpl</XPD:ATTR>
+<XPD:REF name="Namespace">LJ/oPzFt2k6DKnJ2oYPDpwAA</XPD:REF>
+</XPD:OBJ>
+<XPD:OBJ name="OwnedElements[7]" type="UMLClass" guid="CZO++4Yt+ki/Ua2jE2TG+AAA">
+<XPD:ATTR name="Name" type="string">CollectImpl</XPD:ATTR>
+<XPD:REF name="Namespace">LJ/oPzFt2k6DKnJ2oYPDpwAA</XPD:REF>
+</XPD:OBJ>
+</XPD:OBJ>
+<XPD:OBJ name="OwnedElements[1]" type="UMLInterface" guid="MNe6K0DljUyhupBvSYtF5wAA">
+<XPD:ATTR name="Name" type="string">UserService</XPD:ATTR>
+<XPD:REF name="Namespace">vt/MvRi9g0iI0rwwfJXv8gAA</XPD:REF>
+</XPD:OBJ>
+<XPD:OBJ name="OwnedElements[2]" type="UMLInterface" guid="D+7BqcnVHUiVMz7kqzYGtgAA">
+<XPD:ATTR name="Name" type="string">AdminService</XPD:ATTR>
+<XPD:REF name="Namespace">vt/MvRi9g0iI0rwwfJXv8gAA</XPD:REF>
+</XPD:OBJ>
+<XPD:OBJ name="OwnedElements[3]" type="UMLInterface" guid="VO9+VYtKsE26JZ5ao/DXXgAA">
+<XPD:ATTR name="Name" type="string">TieService</XPD:ATTR>
+<XPD:REF name="Namespace">vt/MvRi9g0iI0rwwfJXv8gAA</XPD:REF>
+</XPD:OBJ>
+<XPD:OBJ name="OwnedElements[4]" type="UMLInterface" guid="CHkWBOib6kG64ZSEJcgQxwAA">
+<XPD:ATTR name="Name" type="string">CommentService</XPD:ATTR>
+<XPD:REF name="Namespace">vt/MvRi9g0iI0rwwfJXv8gAA</XPD:REF>
+</XPD:OBJ>
+<XPD:OBJ name="OwnedElements[5]" type="UMLInterface" guid="paysts/Z1kWQMR3ime2kKgAA">
+<XPD:ATTR name="Name" type="string">AreaService</XPD:ATTR>
+<XPD:REF name="Namespace">vt/MvRi9g0iI0rwwfJXv8gAA</XPD:REF>
+</XPD:OBJ>
+<XPD:OBJ name="OwnedElements[6]" type="UMLInterface" guid="tCOGamriA0KcsrExRDRF0gAA">
+<XPD:ATTR name="Name" type="string">UserFAreaService</XPD:ATTR>
+<XPD:REF name="Namespace">vt/MvRi9g0iI0rwwfJXv8gAA</XPD:REF>
+</XPD:OBJ>
+<XPD:OBJ name="OwnedElements[7]" type="UMLInterface" guid="fFizssso906d5JapKCjs7AAA">
+<XPD:ATTR name="Name" type="string">UserFUserService</XPD:ATTR>
+<XPD:REF name="Namespace">vt/MvRi9g0iI0rwwfJXv8gAA</XPD:REF>
+</XPD:OBJ>
+<XPD:OBJ name="OwnedElements[8]" type="UMLInterface" guid="onmKLpBQp0mz1IRcANHU5wAA">
+<XPD:ATTR name="Name" type="string">CollectService</XPD:ATTR>
+<XPD:REF name="Namespace">vt/MvRi9g0iI0rwwfJXv8gAA</XPD:REF>
+</XPD:OBJ>
+</XPD:OBJ>
+<XPD:OBJ name="OwnedElements[3]" type="UMLPackage" guid="4KaPR8LY3Umr/xFF8lky9gAA">
+<XPD:ATTR name="Name" type="string">controller</XPD:ATTR>
+<XPD:REF name="Namespace">GrwNgH0gIEmiQERS85OhigAA</XPD:REF>
+<XPD:ATTR name="#OwnedElements" type="integer">8</XPD:ATTR>
+<XPD:OBJ name="OwnedElements[0]" type="UMLClass" guid="RryIWXf1y0moT5vb7CRsHQAA">
+<XPD:ATTR name="Name" type="string">UserController</XPD:ATTR>
+<XPD:REF name="Namespace">4KaPR8LY3Umr/xFF8lky9gAA</XPD:REF>
+</XPD:OBJ>
+<XPD:OBJ name="OwnedElements[1]" type="UMLClass" guid="RfvhTjm+a0+wD1KrnmAXWAAA">
+<XPD:ATTR name="Name" type="string">AdminController</XPD:ATTR>
+<XPD:REF name="Namespace">4KaPR8LY3Umr/xFF8lky9gAA</XPD:REF>
+</XPD:OBJ>
+<XPD:OBJ name="OwnedElements[2]" type="UMLClass" guid="Al9Om/MrmE+znJS6fCrkswAA">
+<XPD:ATTR name="Name" type="string">TieController</XPD:ATTR>
+<XPD:REF name="Namespace">4KaPR8LY3Umr/xFF8lky9gAA</XPD:REF>
+</XPD:OBJ>
+<XPD:OBJ name="OwnedElements[3]" type="UMLClass" guid="viJtZFsO+0mHs6C/ZTMsSQAA">
+<XPD:ATTR name="Name" type="string">CommentController</XPD:ATTR>
+<XPD:REF name="Namespace">4KaPR8LY3Umr/xFF8lky9gAA</XPD:REF>
+</XPD:OBJ>
+<XPD:OBJ name="OwnedElements[4]" type="UMLClass" guid="N8K0YX7aX0qT5GAJl1aMNgAA">
+<XPD:ATTR name="Name" type="string">AreaController</XPD:ATTR>
+<XPD:REF name="Namespace">4KaPR8LY3Umr/xFF8lky9gAA</XPD:REF>
+</XPD:OBJ>
+<XPD:OBJ name="OwnedElements[5]" type="UMLClass" guid="IVv00xwLy0CuO1D/4ukAzwAA">
+<XPD:ATTR name="Name" type="string">UserFAreaController</XPD:ATTR>
+<XPD:REF name="Namespace">4KaPR8LY3Umr/xFF8lky9gAA</XPD:REF>
+</XPD:OBJ>
+<XPD:OBJ name="OwnedElements[6]" type="UMLClass" guid="L8sdoNE9uEO2Dfc87PMRmAAA">
+<XPD:ATTR name="Name" type="string">UserFUserController</XPD:ATTR>
+<XPD:REF name="Namespace">4KaPR8LY3Umr/xFF8lky9gAA</XPD:REF>
+</XPD:OBJ>
+<XPD:OBJ name="OwnedElements[7]" type="UMLClass" guid="doay0GGK5UiwXaiGI/s34AAA">
+<XPD:ATTR name="Name" type="string">CollectController</XPD:ATTR>
+<XPD:REF name="Namespace">4KaPR8LY3Umr/xFF8lky9gAA</XPD:REF>
+</XPD:OBJ>
+</XPD:OBJ>
+</XPD:OBJ>
+</XPD:OBJ>
+</XPD:OBJ>
+</XPD:BODY>
+</XPD:PROJECT>

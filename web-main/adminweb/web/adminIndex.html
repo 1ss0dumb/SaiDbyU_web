@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>后台管理系统</title>
+		<link href="../res/bs/css/bootstrap.min.css" type="text/css" rel="stylesheet">
+		<link href="../res/css/adminIndex.css" type="text/css" rel="stylesheet">
+	</head>
+	<body style="background-color: #EEEEE9;">
+		<div id="app" class="container containers" >
+			<div class="row" style="height: 1000px; ">
+				
+				<div class="col-md-2" style="background-color: #D6E9F6; height: 800px;">
+					
+					<div class="row">
+						<img class="leftlogorows" src="../res/img/logo.jpg"  />
+					</div>
+					
+					<button class="leftbutton" v-on:click="changestate(1)">
+						<div class="row leftrows">
+							<h4 class="lefth4">管理员 <small>查询 添加 删除</small></h3>
+						</div>
+					</button>
+					<button class="leftbutton"v-on:click="changestate(2)">
+						<div class="row leftrows">
+							<h4 class="lefth4">分区 <small>添加 修改</small></h3>
+						</div>
+					</button>
+					<button class="leftbutton"v-on:click="changestate(3)">
+						<div class="row leftrows">
+							<h4 class="lefth4">分区 <small>查询  删除</small></h3>
+						</div>
+					</button>
+					<button class="leftbutton"v-on:click="changestate(4)">
+						<div class="row leftrows">
+							<h4 class="lefth4">用户信息 <small>查询 修改</small></h3>
+						</div>
+					</button>
+					<button class="leftbutton"v-on:click="changestate(5)">
+						<div class="row leftrows">
+							<h4 class="lefth4">贴文 <small>查询 删除</small></h3>
+						</div>
+					</button>
+					
+				</div>
+				
+				
+				<div v-if="state==1" class="col-md-10 rightrows" >
+					
+					<div class="row rows" >
+						 <div class="col-md-2">
+						 	管理员Id				 
+						 </div>
+						 <div class="col-md-4">
+							 <input type="text" v-model="adminId" class="form-control" placeholder="id">
+						 </div>
+					 </div>
+					<div class="row rows" >
+						 <div class="col-md-2">
+						 	管理员密码				 
+						 </div>
+						 <div class="col-md-4">
+							 <input type="text"v-model="adminPassword" class="form-control" placeholder="passward">
+						 </div>
+					</div>
+					 
+					<button type="button" v-on:click="adminInsert" class="btn btn-primary" style="margin-top: 22px;margin-bottom: 22px;margin-left: 165px;">
+						 添加
+					</button>
+					
+					<div class="row rows">
+						<div class="col-md-1"></div>
+						<div class="col-md-3">Id</div>
+						<div class="col-md-3">密码</div>
+						<div class="col-md-3">删除</div>
+					</div>
+					
+					<div class="row rows" v-for="admin in adminList">
+						<div class="col-md-1"></div>
+						<div class="col-md-3">{{admin.adminId}}</div>
+						<div class="col-md-3">{{admin.adminPassword}}</div>
+						<div class="col-md-3">
+							 <button type="button" v-on:click="adminRemove(admin.adminId)" class="btn btn-danger">删除</button>
+						</div>
+					</div>
+					
+				</div>
+					
+					
+					
+				
+				<div v-if="state==2" class="col-md-10 rightrows" >
+				
+					<div class="row rows" >
+						 <div class="col-md-2">
+						 	分区Id				 
+						 </div>
+						 <div class="col-md-4">
+							 <input disabled type="text" v-model="areaId" class="form-control" placeholder="id">
+						 </div>
+					 </div>
+					<div class="row rows" >
+						 <div class="col-md-2">
+						 分区名称					 
+						 </div>
+						 <div class="col-md-4">
+							 <input type="text"v-model="areaName" class="form-control" placeholder="name">
+						 </div>
+					</div>
+					 <div class="row rows" >
+					 	 <div class="col-md-2">
+					 	 	头像路径			 
+					 	 </div>
+					 	 <div class="col-md-4">
+					 		 <input type="text"v-model="areaAvatar" class="form-control" placeholder="avatar">
+					 	 </div>
+					 </div>
+					<button type="button" v-on:click="areaInsert" class="btn btn-primary" style="margin-top: 22px;margin-bottom: 22px;margin-left: 165px;">
+						 添加
+					</button>
+					<button type="button" v-on:click="areaEmpty" class="btn btn-default" style="margin-top: 22px;margin-bottom: 22px;margin-left: 100px;">
+						 清空
+					</button>
+					<button type="button" v-on:click="areaUpdate" class="btn btn-warning" style="margin-top: 22px;margin-bottom: 22px;margin-left: 100px;">
+						 修改
+					</button>
+					
+				</div>
+				<div v-if="state==3" class="col-md-10 rightrows" >
+				
+					<div class="row rows">
+						<div class="col-md-1"></div>
+						<div class="col-md-2">分区Id</div>
+						<div class="col-md-2">分区名称</div>
+						<div class="col-md-2">头像路径</div>
+						<div class="col-md-2">前往修改</div>
+						<div class="col-md-2">删除</div>
+					</div>
+					
+					<div class="row rows" v-for="area in areaList">
+						<div class="col-md-1"></div>
+						<div class="col-md-2">{{area.areaId}}</div>
+						<div class="col-md-2">{{area.areaName}}</div>
+						<div class="col-md-2">{{area.areaAvatar}}</div>
+						<div class="col-md-2">
+							 <button type="button" v-on:click="areaToUpdate(area.areaId,area.areaName,area.areaAvatar)" class="btn btn-warning">修改</button>
+						</div>
+						<div class="col-md-2">
+							 <button type="button" v-on:click="areaRemove(area.areaId)" class="btn btn-danger">删除</button>
+						</div>
+					</div>
+					
+				</div>
+				<div v-if="state==4" class="col-md-10 rightrows" >
+				
+					<div class="row rows" >
+						 <div class="col-md-2">
+							id				 
+						 </div>
+						 <div class="col-md-4">
+							 <input disabled type="text" v-model="userId" class="form-control" placeholder="id">
+						 </div>
+					 </div>
+					<div class="row rows" >
+						 <div class="col-md-2">
+						 用户名					 
+						 </div>
+						 <div class="col-md-4">
+							 <input type="text"v-model="userName" class="form-control" placeholder="name">
+						 </div>
+					</div>
+					
+					 <div class="row rows" >
+						 <div class="col-md-2">
+							头像路径		 
+						 </div>
+						 <div class="col-md-4">
+							 <input type="text"v-model="userAvatar" class="form-control" placeholder="avatar">
+						 </div>
+					 </div>
+					 
+					 <div class="row rows">
+					 	<div class="col-md-2">
+					 		性别
+					 	</div>
+					     <div class="col-md-4">
+					 	    <select class="form-control" v-model="userGender">
+					 			<option value = 1 >男</option>
+								<option value = 2 >女</option>
+							</select>
+					 	</div>
+					  </div>
+					 
+					 <div class="row rows" >
+						 <div class="col-md-2">
+							邮箱		 
+						 </div>
+						 <div class="col-md-4">
+							 <input type="text"v-model="userMail" class="form-control" placeholder="Mail">
+						 </div>
+					 </div>
+					 
+					 <div class="row rows" >
+						 <div class="col-md-2">
+							注册时间		 
+						 </div>
+						 <div class="col-md-4">
+							 <input disabled type="text"v-model="userCreateTime" class="form-control" placeholder="createTime">
+						 </div>
+					 </div>
+					 
+					 <div class="row rows" >
+						 <div class="col-md-2">
+							状态		 
+						 </div>
+						 <div class="col-md-4">
+							 <input disabled type="text"v-model="userStatus" class="form-control" placeholder="Status">
+						 </div>
+					 </div>
+		
+					<button type="button" v-on:click="userUpdate" class="btn btn-warning" style="margin-top: 22px;margin-bottom: 22px;margin-left: 160px;">
+						 修改
+					</button>
+					
+					
+					
+					<div class="row rows">
+						<div class="col-md-1">Id</div>
+						<div class="col-md-1">用户名</div>
+						<div class="col-md-2">头像路径</div>
+						<div class="col-md-1">性别</div>
+						<div class="col-md-2">邮箱</div>
+						<div class="col-md-2">注册时间</div>
+						<div class="col-md-1">状态</div>
+						<div class="col-md-1">修改</div>
+						<div class="col-md-1">删除</div>
+					</div>
+						
+					<div class="row rows" v-for="user in userList">
+						<div class="col-md-1">{{user.userId}}</div>
+						<div class="col-md-1">{{user.userName}}</div>
+						<div class="col-md-2">{{user.userAvatar}}</div>
+						<div class="col-md-1">{{user.userGender}}</div>
+						<div class="col-md-2">{{user.userMail}}</div>
+						<div class="col-md-2">{{user.userCreateTime}}</div>
+						<div class="col-md-1">{{user.userStatus}}</div>
+						<div class="col-md-1">
+							<button type="button" v-on:click="userToUpdate(user.userId,user.userName,user.userAvatar,user.userGender,user.userMail,user.userCreateTime,user.userStatus)" class="btn btn-warning">
+								 修改
+							</button>
+						</div>
+						<div class="col-md-1">
+							 <button type="button" v-on:click="userRemove(user.userId)" class="btn btn-danger">
+								 删除
+							</button>
+						</div>
+					</div>
+					
+					
+				</div>
+				<div v-if="state==5" class="col-md-10 rightrows" >
+				
+					<div class="row rows">
+						<div class="col-md-1">
+							分区
+						</div>
+					    <div class="col-md-4">
+						    <select class="form-control" v-model="selectedArea">
+								<option value=-1 >全部</option>
+								<option v-for="(area,index) in areaList" v-bind:value= index>{{area.areaName}}</option>
+							</select>
+						</div>
+					 </div>
+				
+					<div class="row rows">
+						<div class="col-md-1">Id</div>
+						<div class="col-md-2">题目</div>
+						<div class="col-md-1">图片路径</div>
+						<div class="col-md-1">作者</div>
+						<div class="col-md-1">分区</div>
+						<div class="col-md-1">点赞数</div>
+						<div class="col-md-1">评论数</div>
+						<div class="col-md-1">浏览量</div>
+						<div class="col-md-2">发布时间</div>
+						<div class="col-md-1">删除</div>
+					</div>
+					
+					<div class="row rows" v-for="tie in tieList" v-if="selectedArea==-1||tie.areaId==areaList[selectedArea].areaId">
+						<div class="col-md-1">{{tie.tieId}}</div>
+						<div class="col-md-2">{{tie.tieTitle}}</div>
+						<div class="col-md-1">{{tie.tiePng}}</div>
+						<div class="col-md-1">{{tie.authorName}}</div>
+						<div class="col-md-1">{{tie.areaName}}</div>
+						<div class="col-md-1">{{tie.likedNum}}</div>
+						<div class="col-md-1">{{tie.commentNum}}</div>
+						<div class="col-md-1">{{tie.lookedNum}}</div>
+						<div class="col-md-2">{{tie.writeTime}}</div>
+						<div class="col-md-1">
+							 <button type="button" v-on:click="tieRemove(tie.tieId)" class="btn btn-danger">
+								 删除
+							</button>
+						</div>
+					</div>
+					
+					
+					
+				</div>
+				
+				
+				
+				
+			</div>
+		</div>
+		<div  class="end">
+			<div class="inside">
+				<p><a  target="_blank"href="https://www.12377.cn/">网上有害信息举报专区丨中央网信办（国家网信办）违法和不良信息举报中心</a></p>
+				<p>网络文化经营单位</p>
+				<p><a target="_blank"href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=11010802029026">京公网安备 123456789号</a></p>
+			</div>
+			<div class="inside">
+				<p><a target="_blank"href="https://beian.miit.gov.cn/#/Integrated/index">京ICP备150150150号</a></p>
+				<p><a target="_blank"href="http://www.bjjubao.org/">北京互联网举报中心</a></p>
+				<p>文化市场举报热线123123</p>
+			</div>
+			<div class="inside">
+				<p>京ICP证1234567号</p>
+				<p><a  target="_blank"href="https://www.acfun.cn/about/qualification">京网文[2021]1-2号</a></p>
+				<p>违法和不良信息举报电话：123-1231233211</p>
+			</div>
+			<div class="inside">
+				<p>节目制作经营许可证（京）字第100123号</p>
+				<p><a target="_blank"href="http://www.cyberpolice.cn/wfjb/">公安部网络违法犯罪举报网站</a></p>
+				<p><a target="_blank"href="mailto:1541689031@qq.com?subject=我%20爱&body=学%20习">举报邮箱：1541689031@qq.com</a></p>
+			</div>
+		</div>
+	</body>
+	<script src="../res/js/vue.js"></script>
+	<script src="../res/js/axios.min.js"></script>
+	<script src="../res/js/const.js"></script>
+	<script>
+		var config = {
+			"el":"#app",
+			"data":{
+				"state":"",
+				"adminId":"",
+				"adminPassword":"",
+				"adminList" : [],
+				"areaId": "" ,
+				"areaName" : "",
+				"areaAvatar" : "",
+				"areaList" : [],
+				"userId": "",
+				"userName": "",
+				"userAvatar": "",
+				"userGender": 1,
+				"Gender":["男","女"],
+				"userMail": "",
+				"userCreateTime": "",
+				"userStatus": "",
+				"userList" : [],
+				"selectedArea":-1,
+				"tieList" : []
+				},
+			"methods":{
+				"selectAllAdmin":function(){
+					var url=serverUrl+"/admin/selectAll"
+					axios.post(url)//传参
+					.then(function(res){
+						this.vue.adminList = res.data.data
+					})
+					.catch(function(err){
+					      window.alert("请求失败");
+					})
+				},
+				"selectAllArea":function(){
+					var url=serverUrl+"/area/selectAll"
+					axios.post(url)//传参
+					.then(function(res){
+						
+						this.vue.areaList = res.data.data
+					})
+					.catch(function(err){
+					      window.alert("请求失败");
+					})
+					
+				},
+				"selectAllUser":function(){
+					var url=serverUrl+"/user/selectAll"
+					axios.post(url)//传参
+					.then(function(res){
+						
+						this.vue.userList = res.data.data
+						
+					})
+					.catch(function(err){
+					      window.alert("请求失败");
+					})
+				},
+				"selectAllTie":function(){
+					var url=serverUrl+"/tie/selectAll"
+					axios.post(url)//传参
+					.then(function(res){
+						
+						this.vue.tieList = res.data.data
+						
+					})
+					.catch(function(err){
+					      window.alert("请求失败");
+					})
+				},
+				"adminRemove":function(adminId){
+					var url=serverUrl+"/admin/delete?id="+adminId
+					axios.post(url)//传参
+					.then(function(res){
+						window.alert(res.data.msg)
+						this.vue.selectAllAdmin()
+					})
+					.catch(function(err){
+					      window.alert("请求失败");
+					})
+				},
+				"adminInsert":function(){
+					var url=serverUrl+"/admin/insert?adminId="+this.adminId+"&adminPassword="+this.adminPassword
+					axios.post(url)//传参
+					.then(function(res){
+						window.alert(res.data.msg)
+						this.vue.selectAllAdmin()
+					})
+					.catch(function(err){
+					      window.alert("请求失败");
+					})
+				},
+				"changestate":function(newstate){
+					this.state = newstate
+				},
+				"areaInsert":function(){
+					if(this.areaId!=""){
+						window.alert("分区id在添加下无效，id以系统分配为准")
+					}
+					
+					var url=serverUrl+"/area/insert?areaAvatar="+this.areaAvatar+"&areaName="+this.areaName
+					axios.post(url)//传参
+					.then(function(res){
+						window.alert(res.data.msg)
+						this.vue.selectAllArea()
+					})
+					.catch(function(err){
+					      window.alert("请求失败");
+					})
+				},
+				"areaEmpty":function(){
+					this.areaId = ""
+					this.areaName = ""
+					this.areaAvatar = ""
+				},
+				"areaUpdate":function(){
+					if(this.areaId==""){
+						window.alert("分区id为必填项")
+						return
+					}
+					var url=serverUrl+"/area/update?"+"areaAvatar="+this.areaAvatar+"&areaId="+this.areaId+"&areaName="+this.areaName
+					axios.post(url)//传参
+					.then(function(res){
+						window.alert(res.data.msg)
+						this.vue.selectAllArea()
+					})
+					.catch(function(err){
+					      window.alert("请求失败");
+					})
+					
+				},
+				"areaToUpdate":function(id,name,avatar){
+					this.areaId = id;
+					this.areaName = name;
+					this.areaAvatar = avatar;
+					this.state = 2;
+				},
+				"areaRemove":function(id){
+					var url=serverUrl+"/area/delete?id="+id
+					axios.post(url)//传参
+					.then(function(res){
+						window.alert(res.data.msg)
+						this.vue.selectAllArea()
+					})
+					.catch(function(err){
+					      window.alert("请求失败");
+					})
+				},
+				"userToUpdate":function(userId,userName,userAvatar,userGender,userMail,userCreateTime,userStatus){
+					this.userId = userId;
+					this.userName = userName
+					this.userAvatar = userAvatar
+					if(userGender=="男") {
+						this.userGender = 1
+						}
+					else {
+						this.userGender = 2
+						}
+					this.userMail = userMail
+					this.userCreateTime = userCreateTime
+					this.userStatus = userStatus
+				},
+				"userUpdate":function(){
+					if(this.userId==""){
+						window.alert("id为必填项")
+						return
+					}
+					var url=serverUrl+"/user/update?"
+					+"userAvatar="+this.userAvatar
+					+"&userCreateTime="+this.userCreateTime
+					+"&userGender="+this.Gender[this.userGender-1]
+					+"&userId="+this.userId
+					+"&userMail="+this.userMail
+					+"&userName="+this.userName
+					+"&userStatus="+this.userStatus
+					axios.post(url)//传参
+					.then(function(res){
+						window.alert(res.data.msg)
+						this.vue.selectAllUser()
+					})
+					.catch(function(err){
+					      window.alert("请求失败");
+					})
+				},
+				"userRemove":function(id){
+					var url=serverUrl+"/user/delete?id="+id
+					axios.post(url)//传参
+					.then(function(res){
+						window.alert(res.data.msg)
+						this.vue.selectAllUser()
+					})
+					.catch(function(err){
+					      window.alert("请求失败");
+					})
+				},
+				"tieRemove":function(id){
+					var url=serverUrl+"/tie/delete?id="+id
+					axios.post(url)//传参
+					.then(function(res){
+						window.alert(res.data.msg)
+						this.vue.selectAllTie()
+					})
+					.catch(function(err){
+					      window.alert("请求失败");
+					})
+				}
+				
+			},
+			"mounted":function(){
+				this.selectAllAdmin()
+				this.selectAllArea()
+				this.selectAllUser()
+				this.selectAllTie()
+				this.state = 1
+			}
+			
+		}
+		
+		var vue = new Vue(config)
+	</script>
+</html>
